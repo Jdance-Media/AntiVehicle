@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +21,7 @@ namespace AntiVehicle
 
         private void VehicleManager_onDamageTireRequested(CSteamID instigatorSteamID, InteractableVehicle vehicle, int tireIndex, ref bool shouldAllow, EDamageOrigin damageOrigin)
         {
-            if (instigatorSteamID != null || vehicle.lockedOwner != null)
+            if (instigatorSteamID != CSteamID.Nil && vehicle.lockedOwner != CSteamID.Nil)
             {
                 var otherPlayer = UnturnedPlayer.FromCSteamID(vehicle.lockedOwner);
                 var unturnedPlayer = UnturnedPlayer.FromCSteamID(instigatorSteamID);
@@ -35,3 +35,4 @@ namespace AntiVehicle
         }
     }
 }
+
